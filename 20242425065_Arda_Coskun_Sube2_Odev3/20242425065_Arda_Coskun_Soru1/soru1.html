@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sepet</title>
+</head>
+<body>
+
+  <h1>Alışveriş Sepeti</h1>
+
+  <label>Kaç farklı ürün gireceksiniz?</label>
+  <input type="number" id="urunSayisi">
+  <button onclick="basla()">Başla</button>
+
+  <p id="sonuc"></p>
+
+  <script>
+    function basla() {
+      let urunSayisi = Number(document.getElementById("urunSayisi").value);
+      let sepetToplam = 0;
+      let sonucMetin = "";
+
+      for (let i = 1; i <= urunSayisi; i++) {
+        let urunAdi = prompt(i + ". ürünün adını giriniz:");
+        let urunFiyat = parseFloat(prompt(i + ". ürünün fiyatını giriniz:"));
+        let urunAdet = Number(prompt(i + ". ürünün adetini giriniz:"));
+
+        if (urunFiyat < 0) {
+          sonucMetin += "Ürün fiyatı 0'dan küçük olamaz!<br>";
+        } else if (urunAdet < 1) {
+          sonucMetin += "Ürün adedi 1'den küçük olamaz!<br>";
+        } else {
+          let urunToplam = urunFiyat * urunAdet;
+          sepetToplam = sepetToplam + urunToplam;
+
+          sonucMetin += "Fiyatı " + urunFiyat + " TL olan " + urunAdi + "'dan " + urunAdet + " adet alındı.<br>";
+          sonucMetin += "Toplam bedel: " + urunToplam + " TL<br><br>";
+        }
+      }
+
+      sonucMetin += "Sepet Toplamı: " + sepetToplam + " TL<br>";
+
+      let indirimliToplam = sepetToplam;
+
+      if (sepetToplam >= 1000) {
+        indirimliToplam = sepetToplam - (sepetToplam * 0.10);
+        sonucMetin += "%10 indirim uygulandı!<br>";
+      } else if (sepetToplam >= 500) {
+        indirimliToplam = sepetToplam - (sepetToplam * 0.05);
+        sonucMetin += "%5 indirim uygulandı!<br>";
+      } else {
+        sonucMetin += "İndirim uygulanmadı.<br>";
+      }
+
+      sonucMetin += "İndirimli Sepet Toplamı: " + indirimliToplam + " TL";
+
+      document.getElementById("sonuc").innerHTML = sonucMetin;
+    }
+  </script>
+
+</body>
+</html>

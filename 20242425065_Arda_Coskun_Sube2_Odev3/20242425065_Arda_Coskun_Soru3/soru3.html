@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fibonacci</title>
+</head>
+<body>
+
+  <h1>Fibonacci Serisi</h1>
+
+  <p id="sonuc"></p>
+
+  <script>
+    let a = 0;
+    let b = 1;
+    let sayac = 0;
+    let sonuc = "";
+
+    while (sayac < 20) {
+      sonuc += a + ", ";
+
+      let gecici = a + b;
+      a = b;
+      b = gecici;
+
+      sayac++;
+    }
+
+    document.getElementById("sonuc").innerHTML = sonuc;
+  </script>
+
+</body>
+</html>

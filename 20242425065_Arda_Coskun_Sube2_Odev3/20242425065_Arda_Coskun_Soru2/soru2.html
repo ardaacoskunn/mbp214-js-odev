@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Netflix</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial;
+    }
+
+    h2 {
+      margin: 20px 10px 10px 10px;
+      font-size: 18px;
+    }
+
+    .satir {
+      display: flex;
+      gap: 5px;
+      margin: 0 10px;
+    }
+
+    .kart {
+      width: 200px;
+      height: 120px;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .kart img {
+      width: 200px;
+      height: 120px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+
+    .etiket {
+      position: absolute;
+      bottom: 5px;
+      left: 5px;
+      background-color: red;
+      color: white;
+      font-size: 11px;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="icerik"></div>
+
+  <script>
+    let kategoriler = [
+      {
+        baslik: "Because you watched Gupi",
+        filmler: [
+          { foto: "foto1.jpg", etiket: "Recently Added" },
+          { foto: "foto2.jpg", etiket: "" },
+          { foto: "foto3.jpg", etiket: "" }
+        ]
+      },
+      {
+        baslik: "Activating Hibernation Mode",
+        filmler: [
+          { foto: "foto4.jpg", etiket: "" },
+          { foto: "foto5.jpg", etiket: "" },
+          { foto: "foto6.jpg", etiket: "" }
+        ]
+      },
+      {
+        baslik: "30-Minute Laughs",
+        filmler: [
+          { foto: "foto7.jpg", etiket: "" },
+          { foto: "foto8.jpg", etiket: "" },
+          { foto: "foto9.jpg", etiket: "" }
+        ]
+      },
+      {
+        baslik: "Only on Netflix",
+        filmler: [
+          { foto: "foto10.jpg", etiket: "" },
+          { foto: "foto11.jpg", etiket: "" },
+          { foto: "foto12.jpg", etiket: "" }
+        ]
+      },
+      {
+        baslik: "Because you watched The Decameron",
+        filmler: [
+          { foto: "foto13.jpg", etiket: "Recently Added" },
+          { foto: "foto14.jpg", etiket: "Recently Added" },
+          { foto: "foto15.jpg", etiket: "" }
+        ]
+      }
+    ];
+
+    let icerik = document.getElementById("icerik");
+
+    for (let i = 0; i < kategoriler.length; i++) {
+      let baslik = document.createElement("h2");
+      baslik.innerHTML = kategoriler[i].baslik;
+      icerik.appendChild(baslik);
+
+      let satir = document.createElement("div");
+      satir.className = "satir";
+
+      for (let j = 0; j < kategoriler[i].filmler.length; j++) {
+        let kart = document.createElement("div");
+        kart.className = "kart";
+
+        let img = document.createElement("img");
+        img.src = kategoriler[i].filmler[j].foto;
+        kart.appendChild(img);
+
+        if (kategoriler[i].filmler[j].etiket !== "") {
+          let etiket = document.createElement("span");
+          etiket.className = "etiket";
+          etiket.innerHTML = kategoriler[i].filmler[j].etiket;
+          kart.appendChild(etiket);
+        }
+
+        satir.appendChild(kart);
+      }
+
+      icerik.appendChild(satir);
+    }
+  </script>
+
+</body>
+</html>
