@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ATM</title>
+</head>
+<body>
+
+  <h1>ATM</h1>
+
+  <p>Bakiye: 1000 TL</p>
+
+  <button onclick="bakiyeGor()">1 - Bakiye Gör</button>
+  <button onclick="paraCek()">2 - Para Çek</button>
+  <button onclick="paraYatir()">3 - Para Yatır</button>
+
+  <script>
+    let bakiye = 1000;
+
+    function bakiyeGor() {
+      alert("Bakiyeniz: " + bakiye + " TL");
+    }
+
+    function paraCek() {
+      let tutar = prompt("Çekilecek tutarı giriniz:");
+      tutar = Number(tutar);
+
+      if (tutar > bakiye) {
+        alert("Yetersiz bakiye!");
+      } else {
+        bakiye = bakiye - tutar;
+        alert("Kalan bakiyeniz: " + bakiye + " TL");
+      }
+    }
+
+    function paraYatir() {
+      let tutar = prompt("Yatırılacak tutarı giriniz:");
+      tutar = Number(tutar);
+      bakiye = bakiye + tutar;
+      alert("Yeni bakiyeniz: " + bakiye + " TL");
+    }
+
+  </script>
+
+</body>
+</html>
